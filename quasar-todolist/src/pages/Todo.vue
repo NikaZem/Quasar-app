@@ -8,7 +8,7 @@
       </q-input>
     </div>
     <q-list separator bordered>
-      <q-item @click="task.done = !task.done" :class="{ 'done bg-green-2': task.done }" v-for="(task, index) in tasks" :key="task.title" tag="label" v-ripple>
+      <q-item @click="task.done = !task.done" :class="{ 'done bg-blue-2': task.done }" v-for="(task, index) in tasks" :key="task.title" tag="label" v-ripple>
         <q-item-section avatar>
           <q-checkbox v-model="task.done" val="teal" color="primary" />
         </q-item-section>
@@ -20,6 +20,10 @@
         </q-item-section>
       </q-item>
     </q-list>
+    <div v-if="!tasks.length" class="no-tasks absolute-center">
+      <q-icon name="check" size="150px" color="positive"/>
+      <div class="text-h4 text-positive text-center">Yeti completed all tasks</div>
+    </div>
   </q-page>
 </template>
 
@@ -29,7 +33,7 @@ export default {
     return {
       newTask: '',
       tasks: [
-        {
+       /*  {
           id: 1,
           title: 'hello', 
           done: true
@@ -43,7 +47,7 @@ export default {
           id: 3,
           title: 'hello3', 
           done: false
-        }
+        } */
       ]
     }
   },
@@ -66,7 +70,6 @@ export default {
     addTask() {
       this.tasks.push(
         {
-          id: 5,
           title: this.newTask, 
           done: false
         }
@@ -83,6 +86,8 @@ export default {
     text-decoration: line-through;
     color: grey;
   }
-
+}
+.no-tasks {
+  opacity: 0.5;
 }
 </style>
