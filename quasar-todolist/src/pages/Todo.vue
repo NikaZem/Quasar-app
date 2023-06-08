@@ -87,7 +87,7 @@ export default {
     color: grey;
   }
 }
-.no-tasks {
+/* .no-tasks {
   opacity: 0.5;
-}
+} */
 </style>
